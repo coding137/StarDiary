@@ -1,13 +1,17 @@
 package com.devStereo.owls.diary;
 
+import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 
 import com.example.ihyunbeom.owls.R;
+
+import java.util.ArrayList;
 
 
 /**
@@ -27,7 +31,10 @@ public class DiarylistFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-
+    ArrayList<Item> list;
+    ItemListAdapter adapter= null;
+    View view ;
+    ListView listView;
     private OnFragmentInteractionListener mListener;
 
     public DiarylistFragment() {
@@ -64,8 +71,23 @@ public class DiarylistFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+      view=  inflater.inflate(R.layout.fragment_diarylist, container, false);
+        listView = (ListView)view.findViewById(R.id.listView);
+        list = new ArrayList<>();
+        adapter= new ItemListAdapter(getContext(),R.layout.items,list);
+        listView.setAdapter(adapter);
+
+        Cursor cursor =MainActivity.sqLiteHelper.getData("SELECT * FROM MEMO");
+        list.clear();
+        while(cursor.moveToNext()){
+            int id = cursor.getInt(0);
+            String topic = cursor.getString(1);
+            String contents =cursor.getString(2);
+            list.add(new Item(id,topic,contents));
+        }
+        adapter.notifyDataSetChanged();
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_diarylist, container, false);
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event

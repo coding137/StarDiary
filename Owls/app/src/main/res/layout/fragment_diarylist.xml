@@ -22,7 +22,8 @@
             android:layout_height="400dp"
             android:layout_gravity="center"
             android:dividerHeight="10dp"
-            android:background="#99FFFFFF"/>
+            android:background="#99FFFFFF"
+            android:id="@+id/listView" />
 
         <ImageButton
             android:layout_width="wrap_content"

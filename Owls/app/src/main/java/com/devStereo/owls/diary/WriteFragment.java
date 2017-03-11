@@ -41,7 +41,7 @@ public class WriteFragment extends Fragment {
     private EditText topic ;// Topic of write frag
     private  EditText contents;//Contents of write frag
     private ImageButton submit;// Submit memo to inner db by using DB manager;
-    final DBManager dbManager = new DBManager(getApplicationContext(), "DIARY.db", null, 1);
+    public static DBManager dbManager = new DBManager(getApplicationContext(), "DIARY.db", null, 1);
 
     private OnFragmentInteractionListener mListener;
 
@@ -102,7 +102,8 @@ public class WriteFragment extends Fragment {
                 Log.i("","onClickClick");
                 String mytopic =topic.getText().toString();
                 String myContents = contents.getText().toString();
-                dbManager.insert("INSERT INTO DIARY VALUES(null,'"+mytopic+"','"+myContents+"');");
+                MainActivity.sqLiteHelper.insertData(mytopic,myContents);
+               // dbManager.insert("INSERT INTO DIARY VALUES(null,'"+mytopic+"','"+myContents+"');");
                 Toast.makeText(getApplicationContext(),"write Success",Toast.LENGTH_SHORT);
 
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();

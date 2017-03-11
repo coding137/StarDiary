@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
     ImageButton button_list;
 
     ImageButton[] sButton = new ImageButton[20];
-
+    public static SQLiteHelper sqLiteHelper;
     ImageButton button_write;
 
     public  static Context mContext;
@@ -54,6 +54,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mContext= this;// 다른위치에서 함수를 부르기위해서 선언
+        sqLiteHelper= new SQLiteHelper(this,"MemoDB.sqlite", null,1);
+
+        sqLiteHelper.queryDate("CREATE TABLE IF NOT EXISTS  MEMO (Tid INTEGER PRIMARY KEY AUTOINCREMENT,topic varchar, contents varchar)");
 
         Toast.makeText(getApplicationContext(),"mainActivity oncreate",Toast.LENGTH_SHORT);
         sButton[0] = (ImageButton) findViewById(R.id.star1);
