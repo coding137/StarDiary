@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@drawable/background_diary"
-    tools:context="com.example.ihyunbeom.owls.MainActivity">
+    tools:context="com.devStereo.owls.diary.MainActivity">
 
     <FrameLayout
         android:layout_width="match_parent"
