@@ -15,7 +15,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-import com.example.ihyunbeom.owls.R;
+import com.devStereo.owls.R;
 
 import static com.facebook.FacebookSdk.getApplicationContext;
 
@@ -41,7 +41,7 @@ public class WriteFragment extends Fragment {
     private EditText topic ;// Topic of write frag
     private  EditText contents;//Contents of write frag
     private ImageButton submit;// Submit memo to inner db by using DB manager;
-    public static DBManager dbManager = new DBManager(getApplicationContext(), "DIARY.db", null, 1);
+//    public static DBManager dbManager = new DBManager(getApplicationContext(), "DIARY.db", null, 1);
 
     private OnFragmentInteractionListener mListener;
 
@@ -161,32 +161,32 @@ public class WriteFragment extends Fragment {
     * */
 
 
-    private void init(LayoutInflater inflater){
-
-//        LayoutInflater layoutInflater = (LayoutInflater)((MainActivity)getActivity()).getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View view = inflater.inflate(R.layout.fragment_write,null);
-
-
-        topic = (EditText) view.findViewById(R.id.topic);
-        contents  = (EditText) view.findViewById(R.id.contents);
-        submit = (ImageButton)view.findViewById(R.id.submit);
-
-
-
-        submit.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                Log.i("","onClickClick");
-                String mytopic =topic.getText().toString();
-                String myContents = topic.getText().toString();
-                dbManager.insert("INSERT INTO MEMO VALUES(null,'"+mytopic+"','"+myContents+"',datetime());");
-                Toast.makeText(getApplicationContext(),"write Success",Toast.LENGTH_SHORT);
-
-            }
-        });
-
-    }
+//    private void init(LayoutInflater inflater){
+//
+////        LayoutInflater layoutInflater = (LayoutInflater)((MainActivity)getActivity()).getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+//        View view = inflater.inflate(R.layout.fragment_write,null);
+//
+//
+//        topic = (EditText) view.findViewById(R.id.topic);
+//        contents  = (EditText) view.findViewById(R.id.contents);
+//        submit = (ImageButton)view.findViewById(R.id.submit);
+//
+//
+//
+//        submit.setOnClickListener(new View.OnClickListener() {
+//
+//            @Override
+//            public void onClick(View v) {
+//                Log.i("","onClickClick");
+//                String mytopic =topic.getText().toString();
+//                String myContents = topic.getText().toString();
+//                dbManager.insert("INSERT INTO MEMO VALUES(null,'"+mytopic+"','"+myContents+"',datetime());");
+//                Toast.makeText(getApplicationContext(),"write Success",Toast.LENGTH_SHORT);
+//
+//            }
+//        });
+//
+//    }
 
 
 

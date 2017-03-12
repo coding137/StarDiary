@@ -1,17 +1,27 @@
 package com.devStereo.owls.diary;
 
+import android.app.Activity;
+import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Message;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
-import com.example.ihyunbeom.owls.R;
+
+import com.devStereo.owls.R;
 
 import java.util.ArrayList;
+
+import static com.facebook.FacebookSdk.getApplicationContext;
 
 
 /**
@@ -22,7 +32,7 @@ import java.util.ArrayList;
  * Use the {@link DiarylistFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class DiarylistFragment extends Fragment {
+public class DiarylistFragment extends Fragment implements AdapterView.OnItemClickListener{
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -36,7 +46,7 @@ public class DiarylistFragment extends Fragment {
     View view ;
     ListView listView;
     private OnFragmentInteractionListener mListener;
-
+    OnHeadlineSelectedListener mCallback;
     public DiarylistFragment() {
         // Required empty public constructor
     }
@@ -87,6 +97,9 @@ public class DiarylistFragment extends Fragment {
         }
         adapter.notifyDataSetChanged();
         // Inflate the layout for this fragment
+
+        listView.setOnItemClickListener(this);
+
         return view;
     }
 
@@ -96,23 +109,27 @@ public class DiarylistFragment extends Fragment {
             mListener.onFragmentInteraction(uri);
         }
     }
-    /*
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }
-    }
-    */
+
+
 
     @Override
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        int tid =list.get(position).getId();
+        String topic= list.get(position).getTopic();
+        String contents= list.get(position).getContents();
+
+        ((MainActivity)MainActivity.mContext).bundleManager.setBundle(tid,topic,contents);
+
+        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+        fragmentManager.beginTransaction().hide(DiarylistFragment.this).commit();
+       ((MainActivity)MainActivity.mContext).goFix(new View(getApplicationContext()));
+       // Toast.makeText(getContext(),"Tid: " +tid+" topic: "+topic+" contents: "+contents,Toast.LENGTH_LONG).show();
     }
 
     /**
@@ -129,4 +146,10 @@ public class DiarylistFragment extends Fragment {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
+
+    public interface OnHeadlineSelectedListener {
+        public void goFix(View v);
+    }
+
+
 }

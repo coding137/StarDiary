@@ -5,7 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
-import com.example.ihyunbeom.owls.R;
+import com.devStereo.owls.R;
+
 
 /**
  * Created by ihyunbeom on 2017-03-03.

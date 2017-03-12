@@ -7,7 +7,8 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.example.ihyunbeom.owls.R;
+
+import com.devStereo.owls.R;
 
 import java.util.ArrayList;
 

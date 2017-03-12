@@ -5,6 +5,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -12,11 +13,12 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import com.example.ihyunbeom.owls.R;
+
+import com.devStereo.owls.R;
 
 import static com.facebook.FacebookSdk.getApplicationContext;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity{
 
     //슬라이드 열기/닫기 플래그
     boolean isPageOpen = false;
@@ -48,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
     LinearLayout sidebar;
     LinearLayout slidingPage;
 
+public  BundleManager bundleManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
         sqLiteHelper= new SQLiteHelper(this,"MemoDB.sqlite", null,1);
 
         sqLiteHelper.queryDate("CREATE TABLE IF NOT EXISTS  MEMO (Tid INTEGER PRIMARY KEY AUTOINCREMENT,topic varchar, contents varchar)");
+        bundleManager = new BundleManager();
 
         Toast.makeText(getApplicationContext(),"mainActivity oncreate",Toast.LENGTH_SHORT);
         sButton[0] = (ImageButton) findViewById(R.id.star1);
@@ -195,6 +199,23 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
+    public void goFix(View v){
+
+        sky.setVisibility(View.GONE);
+        sidebar.setVisibility(View.GONE);
+        button_write.setVisibility(View.GONE);
+        if(isPageOpen)
+            onButton1Clicked(v);
+
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.fragment, new FixFragment());
+        fragmentTransaction.commit();
+
+
+    }
+
     public void createStar(View v){
         //sButton[star].setVisibility(View.VISIBLE);
         if(starrandom == 0)

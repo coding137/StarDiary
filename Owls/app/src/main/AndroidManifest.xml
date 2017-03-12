@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.ihyunbeom.owls">
+    package="com.devStereo.owls">
     <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
