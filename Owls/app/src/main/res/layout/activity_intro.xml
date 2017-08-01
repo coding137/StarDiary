@@ -18,29 +18,30 @@
             android:layout_height="146dp"
             android:layout_gravity="center">
 
-    <ImageView
-        android:layout_width="173dp"
-        android:layout_height="146dp"
-        android:background="@drawable/owl_logo"
-        android:id="@+id/imageView"
-        android:layout_gravity="center"
-        android:layout_marginTop="10dp"
-        />
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="173dp"
+                android:layout_height="146dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/owl_logo" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="70dp">
-    <TextView
-        android:text="OWL STUDIO"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView"
-        android:textStyle="bold"
-        android:textAlignment="center"
-        android:textSize="25dp"
-        android:textColor="#FFFFFF" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="OWL STUDIO"
+                android:textAlignment="center"
+                android:textColor="#FFFFFF"
+                android:textSize="25dp"
+                android:textStyle="bold" />
         </LinearLayout>
 
     </FrameLayout>

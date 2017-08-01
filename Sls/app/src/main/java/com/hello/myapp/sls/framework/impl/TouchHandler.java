@@ -1,0 +1,18 @@
+package com.hello.myapp.sls.framework.impl;
+
+/**
+ * Created by Cloud on 2017-07-31.
+ */
+import  android.view.View.OnTouchListener;
+import com.hello.myapp.sls.framework.Input.TouchEvent;
+import java.util.List;
+
+public interface TouchHandler extends OnTouchListener {
+    public boolean isTouchDown(int pointer);
+
+    public int getTouchX(int pointer);
+
+    public int getTouchY(int pointer);
+
+    public List<TouchEvent> getTouchEvents();
+}
