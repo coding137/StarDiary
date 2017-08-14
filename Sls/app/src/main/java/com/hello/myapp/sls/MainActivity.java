@@ -3,11 +3,11 @@ package com.hello.myapp.sls;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class MainActivity extends AppCompatActivity {
+import com.hello.myapp.sls.framework.Game;
+import com.hello.myapp.sls.framework.Graphics;
+import com.hello.myapp.sls.framework.Pixmap;
+import com.hello.myapp.sls.framework.Screen;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-    }
+public class MainActivity  {
+
 }
