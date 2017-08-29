@@ -12,7 +12,7 @@
         <activity android:name=".MrNomGame"
             android:label="Mr. Nom"
             android:configChanges="keyboard|keyboardHidden|orientation"
-            android:screenOrientation="portrait">
+            android:screenOrientation="landscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

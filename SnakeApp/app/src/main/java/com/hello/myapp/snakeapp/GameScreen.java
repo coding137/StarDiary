@@ -1,5 +1,6 @@
 package com.hello.myapp.snakeapp;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import android.graphics.Color;
@@ -67,12 +68,13 @@ public class GameScreen extends Screen {
                 }
             }
             if(event.type == TouchEvent.TOUCH_DOWN) {
-                if(event.x < 64 && event.y > 416) {
-                    world.snake.turnLeft();
+                if(event.y>256 &&event.y<416) {//좌측 키
+                    world.snake.state= Snake.status.jump;
+                    world.snake.jump();
                 }
-                if(event.x > 256 && event.y > 416) {
-                    world.snake.turnRight();
-                }
+//                if(event.x > 256 && event.y > 416) {//우측 키
+//                    world.snake.turnRight();
+//                }
             }
         }
         
@@ -134,7 +136,7 @@ public class GameScreen extends Screen {
     public void present(float deltaTime) {
         Graphics g = game.getGraphics();
         
-        g.drawPixmap(Assets.background, 0, 0);
+        g.drawPixmap(Assets.landscape, 0, 0);
         drawWorld(world);
         if(state == GameState.Ready) 
             drawReadyUI();
@@ -152,19 +154,16 @@ public class GameScreen extends Screen {
         Graphics g = game.getGraphics();
         Snake snake = world.snake;
         SnakePart head = snake.parts.get(0);
-        Stain stain = world.stain;
-        
-        
+        ArrayList<Stain> stain = world.stain;
+        int x = 0;
+        int y = 0;
         Pixmap stainPixmap = null;
-        if(stain.type == Stain.TYPE_1)
-            stainPixmap = Assets.stain1;
-        if(stain.type == Stain.TYPE_2)
-            stainPixmap = Assets.stain2;
-        if(stain.type == Stain.TYPE_3)
-            stainPixmap = Assets.stain3;
-        int x = stain.x * 32;
-        int y = stain.y * 32;
-        g.drawPixmap(stainPixmap, x, y);             
+        for(int i = 0 ; i < stain.size();i++){
+            x = stain.get(i).x *32;
+            y = stain.get(i).y *32 ;
+            g.drawPixmap(Assets.tail, x, y);
+        }
+
         
         int len = snake.parts.size();
         for(int i = 1; i < len; i++) {
@@ -192,16 +191,16 @@ public class GameScreen extends Screen {
         Graphics g = game.getGraphics();
         
         g.drawPixmap(Assets.ready, 47, 100);
-        g.drawLine(0, 416, 480, 416, Color.BLACK);
+        g.drawLine(0, 256, 480, 256, Color.BLACK);
     }
     
     private void drawRunningUI() {
         Graphics g = game.getGraphics();
 
         g.drawPixmap(Assets.buttons, 0, 0, 64, 128, 64, 64);
-        g.drawLine(0, 416, 480, 416, Color.BLACK);
-        g.drawPixmap(Assets.buttons, 0, 416, 64, 64, 64, 64);
-        g.drawPixmap(Assets.buttons, 256, 416, 0, 64, 64, 64);
+        g.drawLine(0, 256, 480, 256, Color.BLACK);
+        g.drawPixmap(Assets.buttons, 0, 256, 64, 64, 64, 64);
+        g.drawPixmap(Assets.buttons, 416, 256, 0, 64, 64, 64);
     }
     
     private void drawPausedUI() {
