@@ -102,7 +102,7 @@ public class World {// 가로 새로의 길이가 바뀌고 landscape로 변경�
 //            snake.advance();// 대신에 스테인 advance 코드
             advance_obstacle();
             // 요부분은 유지
-            check_drop();
+            //check_drop();
 //check_ground();
 
             if (snake.state == Snake.status.jump) {
