@@ -5,9 +5,9 @@ package com.hello.myapp.snakeapp;
  */
 
 public class Ground {
-    int x, y;
+    float x, y;
 
-    public Ground(int x, int y) {
+    public Ground(float x, float y) {
         this.x = x;
         this.y = y;
     }

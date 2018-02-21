@@ -7,11 +7,11 @@ public class Stain {// obstacle로 변경할 예정
 
     public enum types {Ground, Obstacle, Enemy};
     public enum state {Ready, Created, Died};
-    public int x, y;
+    public float x, y;
 
     public types  type;
 
-    public Stain(int x, int y, types type) {
+    public Stain(float x, float y, types type) {
         this.x = x;
         this.y = y;
         this.type = type;

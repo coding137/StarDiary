@@ -142,7 +142,7 @@ public class World {// 가로 새로의 길이가 바뀌고 landscape로 변경�
             return;
         int posX = snake.parts.get(0).x;
         int posY = snake.parts.get(0).y;
-        int groundposY = 11;
+        float groundposY = 11;
 
 
         for (int i = 0; i < stain.size(); i++) {
@@ -188,8 +188,8 @@ public class World {// 가로 새로의 길이가 바뀌고 landscape로 변경�
 
         Log.d("check stain start ", "head x ,y :" + snake.parts.get(0).x + ", " + snake.parts.get(0).y);
         int len = stain.size();
-        int pos_x = snake.parts.get(0).x;
-        int pos_y = 10;
+        float pos_x = snake.parts.get(0).x;
+        float pos_y = 10;
 
 
         if (snake.state == Snake.status.jump) {
@@ -211,16 +211,16 @@ public class World {// 가로 새로의 길이가 바뀌고 landscape로 변경�
 
         for (int i = 0; i < len; i++) {
 
+            stain.get(i).x-=0.1;
+//            float x = stain.get(i).x-0.1;
+            float y = stain.get(i).y;
 
-            int x = stain.get(i).x--;
-            int y = stain.get(i).y;
-            fields[x][y] = false;
             if (stain.get(i).x < 0) {
                 stain.get(i).x = WORLD_WIDTH - 1;
-                x = stain.get(i).x;
+
 
             }
-            fields[x - 1][y] = true;
+
 
         }
 

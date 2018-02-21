@@ -17,7 +17,7 @@ public class Snake {
     public static final int LEFT = 1;
     public static final int DOWN = 2;
     public static final int RIGHT = 3;
-    public int drop_time=0;
+    public float drop_time=0;
 
    public enum  status {idle, running, jump, die, drop};
     public  status state;

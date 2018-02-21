@@ -155,8 +155,8 @@ public class GameScreen extends Screen {
         Snake snake = world.snake;
         SnakePart head = snake.parts.get(0);
         ArrayList<Stain> stain = world.stain;
-        int x = 0;
-        int y = 0;
+        float x = 0;
+        float y = 0;
         Pixmap stainPixmap = null;
         for(int i = 0 ; i < stain.size();i++){
             x = stain.get(i).x *32;
