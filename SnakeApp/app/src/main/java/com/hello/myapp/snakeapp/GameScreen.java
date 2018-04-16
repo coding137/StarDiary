@@ -69,8 +69,9 @@ public class GameScreen extends Screen {
             }
             if(event.type == TouchEvent.TOUCH_DOWN) {
                 if(event.y>256 &&event.y<416) {//좌측 키
+                    if(world.snake.state== Snake.status.running)
                     world.snake.state= Snake.status.jump;
-                    world.snake.jump();
+
                 }
 //                if(event.x > 256 && event.y > 416) {//우측 키
 //                    world.snake.turnRight();
@@ -157,7 +158,7 @@ public class GameScreen extends Screen {
         ArrayList<Stain> stain = world.stain;
         float x = 0;
         float y = 0;
-        Pixmap stainPixmap = null;
+
         for(int i = 0 ; i < stain.size();i++){
             x = stain.get(i).x *32;
             y = stain.get(i).y *32 ;
@@ -190,7 +191,7 @@ public class GameScreen extends Screen {
     private void drawReadyUI() {
         Graphics g = game.getGraphics();
         
-        g.drawPixmap(Assets.ready, 47, 100);
+        g.drawPixmap(Assets.ready, 120, 80);
         g.drawLine(0, 256, 480, 256, Color.BLACK);
     }
     
@@ -206,8 +207,8 @@ public class GameScreen extends Screen {
     private void drawPausedUI() {
         Graphics g = game.getGraphics();
         
-        g.drawPixmap(Assets.pause, 80, 100);
-        g.drawLine(0, 416, 480, 416, Color.BLACK);
+        g.drawPixmap(Assets.pause, 160, 80);
+        g.drawLine(0, 256, 480, 256, Color.RED);
     }
 
     private void drawGameOverUI() {

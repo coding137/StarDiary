@@ -1,9 +1,9 @@
 package com.hello.myapp.snakeapp;
 
 public class SnakePart {
-    public int x, y;
+    public float x, y;
     
-    public SnakePart(int x, int y) {
+    public SnakePart(float x, float y) {
         this.x = x;
         this.y = y;
     }
