@@ -19,11 +19,11 @@ public class Snake {
     public static final int RIGHT = 3;
     public float drop_time=0;
     public float max_height=3;
-    public float jump_power= (float) 0.3;
-    public static final float Initial_jump_power=0.45f;
-    public static final float Initial_drop_power=0.1f;
+    public float jump_power= (float) 0.5;
+    public static final float Initial_jump_power=0.5f;
+    public static final float Initial_drop_power=0.04f;
 
-    public float drop_power=(float) 0.05;
+    public float drop_power=(float) 0.04;
    public enum  status {idle, running, jump, die, drop};
     public  status state;
     public List<SnakePart> parts = new ArrayList<SnakePart>();
@@ -59,7 +59,7 @@ public class Snake {
             if(jump_power<=0){
                 state=status.drop;
                 jump_power= Initial_jump_power;
-                Log.d("jump Function","now changed status");
+               // Log.d("jump Function","now changed status");
             }else{
                 head.y -= 1*jump_power;
                 jump_power-=0.03;
@@ -77,8 +77,8 @@ public class Snake {
             head.y+=1*drop_power;
             drop_power+=0.1;
 
-            Log.d("drop function","y axis : "+ head.y);
-            Log.d("drop function","drop power: "+ drop_power);
+        //    Log.d("drop function","y axis : "+ head.y);
+          //  Log.d("drop function","drop power: "+ drop_power);
 
             if(head.y>=5){
                 head.y=5;

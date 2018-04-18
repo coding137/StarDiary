@@ -83,7 +83,7 @@ public class World {// 가로 새로의 길이가 바뀌고 landscape로 변경�
 
                 cycle = 0;
             }
-           // check_stain();
+            crush_check();
 
         }
     }
@@ -96,14 +96,33 @@ public class World {// 가로 새로의 길이가 바뀌고 landscape로 변경�
 
         for (int i = 0 ; i <len; i++){
 
+            float x1,x2,x3,x4,y1,y2,y3,y4;
+
             float x =stain.get(i).x;
             float y = stain.get(i).y;
+            x1 = (float) (head.x-0.5);
+            x2 = (float) (head.x+0.5);
 
-            if( (head.x-0.5<=x+0.5)&& (head.y-0.5<=y+0.5) || ((head.x+0.5>=x-0.5)&& (head.y-0.5<=y+0.5)) || ((head.x-0.5<=x+0.5)&&(head.y+0.5>= y-0.5)) || ((head.x+0.5 >= x-0.5)&&(head.y+0.5>=y-0.5)) ){
+            x3 = (float) (x-0.5);
+            x4 = (float) (x+0.5);
+
+            y1 = (float) (head.y-0.5);
+            y2 = (float) (head.y+0.5);
+
+            y3 = (float) (y-0.5);
+            y4 = (float) (y+0.5);
+
+//            Log.d("x,y values : ",x+", "+y);
+                if((((x2<= x4)&&(x3<=x2))&&((y3<=y2)&&(y1<=y3))) ||
+                        (((x1<= x4)&&(x1>=x3))&&((y1<=y4)&&(y1>=y3))) ||
+                        (((x3<= x2)&&(x2<=x4))&&((y1<=y4)&&(y1>=y3))) ||
+                        (((x3<= x1)&&(x1<=x4))&&((y3<=y2)&&(y2<=y4)))){
+
                 if(stain.get(i).type == Stain.types.Obstacle){
-                    snake.state= Snake.status.die;
-
+//                    snake.state= Snake.status.die;
+                    Log.d("Crush Event","Now crush Obstacle no."+i);
                 }else if (stain.get(i).type== Stain.types.Ground){
+//                    Log.d("Crush Event","Now crush ground no. : "+i);
 
                 }
             }
