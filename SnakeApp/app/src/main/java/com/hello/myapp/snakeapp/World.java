@@ -42,7 +42,7 @@ public class World {// 가로 새로의 길이가 바뀌고 landscape로 변경�
 
         for (int i = 0; i <= WORLD_WIDTH+1; i++) {
             for (int j = 6; j <= 7; j++) {
-                if (i != 6) {
+                if (i != 6 && i!=7 && i!=8) {
 
                     stain.add(new Stain(i, j, Stain.types.Ground));
 
@@ -52,9 +52,10 @@ public class World {// 가로 새로의 길이가 바뀌고 landscape로 변경�
     }
 
     public void update(float deltaTime) {
-        if (gameOver)
+        if (snake.state== Snake.status.die) {
+         gameOver=true;
             return;
-
+        }
         tickTime += deltaTime;
       //  Log.d("snake y position  : ", "" + snake.parts.get(0).y);
         while (tickTime > tick) {
@@ -100,8 +101,8 @@ public class World {// 가로 새로의 길이가 바뀌고 landscape로 변경�
 
             float x =stain.get(i).x;
             float y = stain.get(i).y;
-            x1 = (float) (head.x-0.5);
-            x2 = (float) (head.x+0.5);
+            x1 = (float) (head.x-0.4);
+            x2 = (float) (head.x+0.4);
 
             x3 = (float) (x-0.5);
             x4 = (float) (x+0.5);
@@ -119,10 +120,10 @@ public class World {// 가로 새로의 길이가 바뀌고 landscape로 변경�
                         (((x3<= x1)&&(x1<=x4))&&((y3<=y2)&&(y2<=y4)))){
 
                 if(stain.get(i).type == Stain.types.Obstacle){
-//                    snake.state= Snake.status.die;
-                    Log.d("Crush Event","Now crush Obstacle no."+i);
+                    snake.state= Snake.status.die;
+//                    Log.d("Crush Event","Now crush Obstacle no."+i);
                 }else if (stain.get(i).type== Stain.types.Ground){
-//                    Log.d("Crush Event","Now crush ground no. : "+i);
+                    Log.d("Crush Event","Now crush ground no. : "+i);
 
                 }
             }
