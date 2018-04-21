@@ -22,12 +22,15 @@ public class Assets {
     public static Pixmap headLeft;
     public static Pixmap headDown;
     public static Pixmap headRight;
+    public static Pixmap jump;
     public static Pixmap tail;
     public static Pixmap stain1;
     public static Pixmap stain2;
     public static Pixmap stain3;
 
     public static Pixmap landscape;
+    public static Pixmap firstpage;
+
     
     public static Sound click;
     public static Sound eat;

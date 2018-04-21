@@ -9,7 +9,7 @@ public class World {// 가로 새로의 길이가 바뀌고 landscape로 변경�
     static final int WORLD_WIDTH = 15;
     static final int WORLD_HEIGHT = 8;
     static final int SCORE_INCREMENT = 10;
-    static final float TICK_INITIAL = 0.1f;
+    static final float TICK_INITIAL = 0.05f;
     static final float TICK_DECREMENT = 0.05f;
     static final int OBSTACLE_CYCLE = 5;
 
@@ -41,8 +41,8 @@ public class World {// 가로 새로의 길이가 바뀌고 landscape로 변경�
 
 
         for (int i = 0; i <= WORLD_WIDTH+1; i++) {
-            for (int j = 6; j <= 7; j++) {
-                if (i != 6 && i!=7 && i!=8) {
+            for (int j = 8; j <= 9; j++) {
+                if ( i!=7 && i!=8) {
 
                     stain.add(new Stain(i, j, Stain.types.Ground));
 
@@ -75,13 +75,15 @@ public class World {// 가로 새로의 길이가 바뀌고 landscape로 변경�
                 snake.dropdown();
             }
             advance_obstacle();
-            if (cycle >= 2) {
+
+            if (cycle >= 3) {
+//                if(tick>=0.01)
+//                tick-=0.001;
                 if(snake.state== Snake.status.running){
                     // Log.d("running","running");
 
                     snake.running();
                 }
-
                 cycle = 0;
             }
             crush_check();
@@ -101,8 +103,8 @@ public class World {// 가로 새로의 길이가 바뀌고 landscape로 변경�
 
             float x =stain.get(i).x;
             float y = stain.get(i).y;
-            x1 = (float) (head.x-0.4);
-            x2 = (float) (head.x+0.4);
+            x1 = (float) (head.x-0.3);
+            x2 = (float) (head.x+0.3);
 
             x3 = (float) (x-0.5);
             x4 = (float) (x+0.5);
@@ -124,7 +126,9 @@ public class World {// 가로 새로의 길이가 바뀌고 landscape로 변경�
 //                    Log.d("Crush Event","Now crush Obstacle no."+i);
                 }else if (stain.get(i).type== Stain.types.Ground){
                     Log.d("Crush Event","Now crush ground no. : "+i);
-
+                    snake.state= Snake.status.running;
+                }else if(snake.state!= Snake.status.jump&&snake.state!= Snake.status.die){
+                    snake.state = Snake.status.drop;
                 }
             }
 
@@ -192,7 +196,7 @@ public class World {// 가로 새로의 길이가 바뀌고 landscape로 변경�
     }
 
     public void init_obstacle() {
-        for (int j = 4; j <= 5; j++) {
+        for (int j = 6; j <= 7; j++) {
             stain.add(new Stain(WORLD_WIDTH - 1, j, Stain.types.Obstacle));
         }
     }

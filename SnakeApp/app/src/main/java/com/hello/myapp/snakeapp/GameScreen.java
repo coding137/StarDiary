@@ -137,7 +137,7 @@ public class GameScreen extends Screen {
     public void present(float deltaTime) {
         Graphics g = game.getGraphics();
         
-        g.drawPixmap(Assets.landscape, 0, 0);
+        g.drawPixmap(Assets.firstpage, 0, 0);
         drawWorld(world);
         if(state == GameState.Ready) 
             drawReadyUI();
@@ -182,7 +182,9 @@ public class GameScreen extends Screen {
         if(snake.direction == Snake.DOWN) 
             headPixmap = Assets.headDown;
         if(snake.direction == Snake.RIGHT) 
-            headPixmap = Assets.headRight;        
+            headPixmap = Assets.headRight;
+        if(snake.state== Snake.status.jump)
+            headPixmap= Assets.jump;
         x = head.x * 32 + 16;
         y = head.y * 32 + 16;
         g.drawPixmap(headPixmap, x - headPixmap.getWidth() / 2, y - headPixmap.getHeight() / 2);
@@ -192,23 +194,23 @@ public class GameScreen extends Screen {
         Graphics g = game.getGraphics();
         
         g.drawPixmap(Assets.ready, 120, 80);
-        g.drawLine(0, 256, 480, 256, Color.BLACK);
+        //g.drawLine(0, 256, 480, 256, Color.BLACK);
     }
     
     private void drawRunningUI() {
         Graphics g = game.getGraphics();
 
-        g.drawPixmap(Assets.buttons, 0, 0, 64, 128, 64, 64);
-        g.drawLine(0, 256, 480, 256, Color.BLACK);
-        g.drawPixmap(Assets.buttons, 0, 256, 64, 64, 64, 64);
-        g.drawPixmap(Assets.buttons, 416, 256, 0, 64, 64, 64);
+       // g.drawPixmap(Assets.buttons, 0, 0, 64, 128, 64, 64);
+       // g.drawLine(0, 256, 480, 256, Color.BLACK);
+       // g.drawPixmap(Assets.buttons, 0, 256, 64, 64, 64, 64);
+       // g.drawPixmap(Assets.buttons, 416, 256, 0, 64, 64, 64);
     }
     
     private void drawPausedUI() {
         Graphics g = game.getGraphics();
         
         g.drawPixmap(Assets.pause, 160, 80);
-        g.drawLine(0, 256, 480, 256, Color.RED);
+        //g.drawLine(0, 256, 480, 256, Color.RED);
     }
 
     private void drawGameOverUI() {
@@ -216,7 +218,7 @@ public class GameScreen extends Screen {
         
         g.drawPixmap(Assets.gameOver, 140, 80);
         g.drawPixmap(Assets.buttons, 205, 160, 0, 128, 64, 64);
-        g.drawLine(0, 416, 480, 416, Color.BLACK);
+      //  g.drawLine(0, 416, 480, 416, Color.BLACK);
     }
     
     public void drawText(Graphics g, String line, int x, int y) {
@@ -239,7 +241,7 @@ public class GameScreen extends Screen {
                 srcWidth = 20;
             }
 
-            g.drawPixmap(Assets.numbers, x, y, srcX, 0, srcWidth, 32);
+           // g.drawPixmap(Assets.numbers, x, y, srcX, 0, srcWidth, 32);
             x += srcWidth;
         }
     }

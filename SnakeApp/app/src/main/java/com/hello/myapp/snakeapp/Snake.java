@@ -33,7 +33,7 @@ public class Snake {
     public Snake() {
         state = status.running;
          direction = RIGHT;
-         parts.add(new SnakePart(5, 5));
+         parts.add(new SnakePart(5, 7));
 //        parts.add(new SnakePart(5, 7));
 //        parts.add(new SnakePart(5, 8));
     }
@@ -80,10 +80,13 @@ public class Snake {
         //    Log.d("drop function","y axis : "+ head.y);
           //  Log.d("drop function","drop power: "+ drop_power);
 
-            if(head.y>=5){
-                head.y=5;
+            if(head.y>=7){
+                head.y=7;
                 state=status.running;
                 drop_power= Initial_drop_power;
+            }
+            if(head.y>=9){
+                state=status.die;
             }
         }
 

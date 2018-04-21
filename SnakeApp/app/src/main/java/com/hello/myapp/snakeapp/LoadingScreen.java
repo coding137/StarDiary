@@ -2,7 +2,6 @@ package com.hello.myapp.snakeapp;
 import com.hello.myapp.snakeapp.framework.Game;
 import com.hello.myapp.snakeapp.framework.Graphics;
 import com.hello.myapp.snakeapp.framework.Screen;
-import  com.hello.myapp.snakeapp.framework.Input.TouchEvent;
 import  com.hello.myapp.snakeapp.framework.Graphics.PixmapFormat;
 
 
@@ -25,10 +24,11 @@ public class LoadingScreen extends Screen {
         Assets.ready = g.newPixmap("ready.png", PixmapFormat.ARGB4444);
         Assets.pause = g.newPixmap("pausemenu.png", PixmapFormat.ARGB4444);
         Assets.gameOver = g.newPixmap("gameover.png", PixmapFormat.ARGB4444);
-        Assets.headUp = g.newPixmap("fox4.png", PixmapFormat.ARGB4444);
-        Assets.headLeft = g.newPixmap("fox3.png", PixmapFormat.ARGB4444);
-        Assets.headDown = g.newPixmap("fox2.png", PixmapFormat.ARGB4444);
+        Assets.headUp = g.newPixmap("fox3.png", PixmapFormat.ARGB4444);
+        Assets.headLeft = g.newPixmap("fox2.png", PixmapFormat.ARGB4444);
+        Assets.headDown = g.newPixmap("fox1.png", PixmapFormat.ARGB4444);
         Assets.headRight = g.newPixmap("fox1.png", PixmapFormat.ARGB4444);
+        Assets.jump = g.newPixmap("fox4.png",PixmapFormat.ARGB4444);
         Assets.tail = g.newPixmap("tail.png", PixmapFormat.ARGB4444);
         Assets.stain1 = g.newPixmap("tail.png", PixmapFormat.ARGB4444);
         Assets.stain2 = g.newPixmap("tail.png", PixmapFormat.ARGB4444);
@@ -36,7 +36,8 @@ public class LoadingScreen extends Screen {
         Assets.click = game.getAudio().newSound("click.ogg");
         Assets.eat = game.getAudio().newSound("eat.ogg");
         Assets.bitten = game.getAudio().newSound("bitten.ogg");
-        Assets.landscape = g.newPixmap("landscape.png", PixmapFormat.RGB565);
+        Assets.landscape = g.newPixmap("firstPage2.png", PixmapFormat.RGB565);
+        Assets.firstpage =g.newPixmap("landscapeSeam.png",PixmapFormat.RGB565);
         Settings.load(game.getFileIO());
         game.setScreen(new MainMenuScreen(game));
     }
